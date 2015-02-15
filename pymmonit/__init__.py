@@ -28,3 +28,7 @@ class MMonit:
     def _get(self, url):
         result = self.session.get(self.mmonit_url + url)
         return result.content
+
+    def _post(self, url, data=None):
+        result = self.session.post(self.mmonit_url + url, data)
+        return result.content
