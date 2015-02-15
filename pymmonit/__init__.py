@@ -32,3 +32,15 @@ class MMonit:
     def _post(self, url, data=None):
         result = self.session.post(self.mmonit_url + url, data)
         return result.content
+
+    """
+    http://mmonit.com/documentation/http-api/Methods/Status
+    """
+    def hosts_list(self):
+        return self._get("/status/hosts/list")
+
+    def hosts_get(self, host_id):
+        return self._get("/status/hosts/get?id={}".format(host_id))
+
+    def hosts_summary(self):
+        return  self._get("/status/hosts/summary")
