@@ -53,3 +53,18 @@ class MMonit:
 
     def uptime_services(self):
         return self._get("/reports/uptime/get")
+
+    """
+    http://mmonit.com/documentation/http-api/Methods/Events
+    """
+    def events_list(self):
+        return self._get("/reports/events/list")
+
+    def events_get(self, event_id):
+        return self._get("/reports/events/get?id={}".format(event_id))
+
+    def events_summary(self):
+        return self._get("/reports/events/summary")
+
+    def events_dismiss(self, event_id):
+        return self._post("/reports/events/dismiss", event_id)
