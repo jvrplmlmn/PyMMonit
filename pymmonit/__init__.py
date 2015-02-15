@@ -17,13 +17,13 @@ class MMonit:
 
     def login(self):
         self.session = requests.session()
-        self.session.get(self.mmonit_url + '/index.csp')
+        self._get('/index.csp')
         login_data = {
             "z_username": self.username,
             "z_password": self.password,
             "z_csrf_protection": "off"
         }
-        self.session.post(self.mmonit_url + '/z_security_check', data=login_data)
+        self._post('/z_security_check', data=login_data)
 
     def _get(self, url):
         result = self.session.get(self.mmonit_url + url)
