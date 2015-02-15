@@ -44,3 +44,12 @@ class MMonit:
 
     def hosts_summary(self):
         return  self._get("/status/hosts/summary")
+
+    """
+    http://mmonit.com/documentation/http-api/Methods/Uptime
+    """
+    def uptime_hosts(self):
+        return self._get("/reports/uptime/list")
+
+    def uptime_services(self):
+        return self._get("/reports/uptime/get")
