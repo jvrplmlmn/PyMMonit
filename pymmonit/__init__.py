@@ -24,3 +24,7 @@ class MMonit:
             "z_csrf_protection": "off"
         }
         self.session.post(self.mmonit_url + '/z_security_check', data=login_data)
+
+    def _get(self, url):
+        result = self.session.get(self.mmonit_url + url)
+        return result.content
