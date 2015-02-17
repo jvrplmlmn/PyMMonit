@@ -37,6 +37,9 @@ class MMonit:
     http://mmonit.com/documentation/http-api/Methods/Status
     """
     def hosts_list(self, **kwargs):
+        """
+        Returns the current status of all hosts registered in M/Monit.
+        """
         data = {}
 
         if 'hostid' in kwargs:
