@@ -68,3 +68,36 @@ class MMonit:
 
     def events_dismiss(self, event_id):
         return self._post("/reports/events/dismiss", event_id)
+
+    """
+    http://mmonit.com/documentation/http-api/Methods/Admin_Hosts
+    """
+    def admin_hosts_list(self):
+        return self._get("/admin/hosts/list")
+
+    def admin_hosts_get(self, host_id):
+        return self._get("/admin/hosts/get?id={}".format(host_id))
+
+    def admin_hosts_upadte(self, host_id, **kwargs):
+        return NotImplemented
+
+    def admin_hosts_delete(self, host_id):
+        return self._post("/admin/hosts/delete", {"id": host_id})
+
+    def admin_hosts_test(self, ipaddr, port, ssl, monituser, monitpassword):
+        data = {
+            "ipaddr": ipaddr,
+            "port": port,
+            "ssl": ssl,
+            "monituser": monituser,
+            "monitpassword": monitpassword
+        }
+        return self._post("/admin/hosts/test", data)
+
+    def admin_hosts_action(self, id, action, service):
+        data = {
+            "id": id,
+            "action": action,
+            "service": service
+        }
+        return self._post("/admin/hosts/action", data)
