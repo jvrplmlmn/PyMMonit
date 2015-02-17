@@ -62,6 +62,9 @@ class MMonit:
         return self._post("/status/hosts/list", data)
 
     def hosts_get(self, host_id):
+        """
+        Returns detailed status of the given host.
+        """
         return self._get("/status/hosts/get?id={}".format(host_id))
 
     def hosts_summary(self):
