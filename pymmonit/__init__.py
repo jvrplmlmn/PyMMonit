@@ -36,8 +36,27 @@ class MMonit:
     """
     http://mmonit.com/documentation/http-api/Methods/Status
     """
-    def hosts_list(self):
-        return self._get("/status/hosts/list")
+    def hosts_list(self, **kwargs):
+        data = {}
+
+        if 'hostid' in kwargs:
+            data['hostid'] = kwargs['hostid']
+
+        if 'hostgroupid' in kwargs:
+            data['hostgroupid'] = kwargs['hostgroupid']
+
+        if 'status' in kwargs:
+            data['status'] = kwargs['status']
+
+        if 'platform' in kwargs:
+            data['platform'] = kwargs['platform']
+
+        if 'led' in kwargs:
+            data['led'] = kwargs['led']
+
+        if not data:
+            return self._get("/status/hosts/list")
+        return self._post("/status/hosts/list", data)
 
     def hosts_get(self, host_id):
         return self._get("/status/hosts/get?id={}".format(host_id))
